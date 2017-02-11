@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/activity_main"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="@dimen/activity_margin"
+	tools:context="com.cypher.selftosystem.MainActivity">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:padding="@dimen/inner_margin">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/tv_rootAvailable"
+					android:text="[Root available]"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:padding="@dimen/inner_margin">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="0"
+						android:paddingBottom="@dimen/inner_margin"
+						android:textColor="@android:color/holo_green_light"
+						android:textStyle="normal|bold"
+						android:text="User App"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/tv_userApp"
+						android:text="[DATA]"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:padding="@dimen/inner_margin">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="0"
+						android:paddingBottom="@dimen/inner_margin"
+						android:textColor="@android:color/holo_red_light"
+						android:textStyle="normal|bold"
+						android:text="System App"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/tv_systemApp"
+						android:text="[DATA]"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_weight="1">
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1">
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_refreshData"
+					android:text="Refresh Data"/>
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_gainRootAccess"
+					android:text="Gain Root Access"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1">
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_installAsSystemApp"
+					android:text="Install as\nSystem App"/>
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_uninstallSystemApp"
+					android:text="Uninstall\nSystem App"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1">
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_uninstallUserApp"
+					android:text="Uninstall\nUser App"/>
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_clearAppData"
+					android:text="Clear\nApp Data"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<string name="app_name">Self To System</string>
+	<string name="button_cancel">Cancel</string>
+	<string name="button_close">Close</string>
+	<string name="root_available">Root is available</string>
+	<string name="root_unavailable">Root is NOT available</string>
+
+	<!-- SystemAppUtilities -->
+	<string name="progress_title">Please wait…</string>
+	<string name="progress_copy_to_system">Copying app to system…\n\nMake sure you accept any superuser requests.</string>
+	<string name="progress_uninstalling">Uninstalling app…\n\nMake sure you accept any superuser requests.</string>
+	<string name="progress_deleting">Deleting app data…\n\nMake sure you accept any superuser requests.</string>
+	<string name="complete_title">Success - just one last step!</string>
+	<string name="complete_reboot">A reboot is required. Would you like to reboot now?</string>
+	<string name="button_reboot">Reboot</string>
+	<string name="button_soft_reboot">Soft reboot</string>
+	<string name="button_ok">OK</string>
+	<string name="button_no">No</string>
+</resources>
