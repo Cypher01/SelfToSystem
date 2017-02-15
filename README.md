@@ -1,4 +1,4 @@
-# SelfToSystem
+# Self To System
 
 Self To System is a simple Android example app that can install itself as a system app. Its purpose is to demonstrate the capabilities of its core functionality, the SystemAppUtilities class.
 
