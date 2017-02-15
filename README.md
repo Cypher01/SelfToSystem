@@ -8,4 +8,4 @@ This example app also shows some information about its user and system apk. But 
 
 Every button shows an information dialog before doing anything. You can continue or cancel.
 
-If you\'re interested in making your app capable to install itself as a system app, check out the source code.
+If you're interested in making your app capable to install itself as a system app, check out the source code.
