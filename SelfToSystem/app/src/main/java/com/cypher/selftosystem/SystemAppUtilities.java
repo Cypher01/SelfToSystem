@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * SystemAppUtilities, created by Cypher01
+ * SystemAppUtilities, created by Cypher
  *
  * This class offers various tools to make an app capable of making itself a system app
  *
@@ -67,11 +67,11 @@ public class SystemAppUtilities {
 	 * Gain root access using RootTools
 	 * This leads to a root confirmation popup
 	 *
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static void gainRootAccess() throws SystemAppManagementException {
+	public static void gainRootAccess() throws SystemAppUtilitiesException {
 		if (!RootTools.isAccessGiven()) {
-			throw new SystemAppManagementException("Unable to obtain root access. Please make sure you grant this app root authority.");
+			throw new SystemAppUtilitiesException("Unable to obtain root access. Please make sure you grant this app root authority.");
 		}
 	}
 
@@ -82,9 +82,9 @@ public class SystemAppUtilities {
 	 * @param context app context
 	 * @param systemApp true for the system app (if it exists), false for the user app (if it exists)
 	 * @return APK path, version code and version name, or not-available-message
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static String getApkInfos(final Context context, boolean systemApp) throws SystemAppManagementException {
+	public static String getApkInfos(final Context context, boolean systemApp) throws SystemAppUtilitiesException {
 		String currentFile = getApkName(context, true);
 
 		if (systemApp) {
@@ -111,20 +111,20 @@ public class SystemAppUtilities {
 	 * @param context app context
 	 * @param systemApp true for the system app (if it exists), false for the user app (if it exists)
 	 * @return APKs version code
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static int getApkVersionCode(final Context context, boolean systemApp) throws SystemAppManagementException {
+	public static int getApkVersionCode(final Context context, boolean systemApp) throws SystemAppUtilitiesException {
 		String currentFile = getApkName(context, true);
 
 		if (systemApp) {
 			if (isSystemApp(context)) {
 				currentFile = systemAppFile;
 			} else {
-				throw new SystemAppManagementException("No system app available.");
+				throw new SystemAppUtilitiesException("No system app available.");
 			}
 		} else {
 			if (!currentFile.startsWith("/data/app/")) {
-				throw new SystemAppManagementException("No user app available.");
+				throw new SystemAppUtilitiesException("No user app available.");
 			}
 		}
 
@@ -148,11 +148,11 @@ public class SystemAppUtilities {
 	 *
 	 * @param context app context
 	 * @param overwriteIfExists decides if an existing system app should be overwritten or not
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static void installAsSystemApp(final Context context, final boolean overwriteIfExists) throws SystemAppManagementException {
+	public static void installAsSystemApp(final Context context, final boolean overwriteIfExists) throws SystemAppUtilitiesException {
 		AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
-			SystemAppManagementException error = null;
+			SystemAppUtilitiesException error = null;
 			ProgressDialog progress = null;
 
 			@Override
@@ -165,7 +165,7 @@ public class SystemAppUtilities {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					copyAppToSystem(context, overwriteIfExists);
-				} catch (SystemAppManagementException e) {
+				} catch (SystemAppUtilitiesException e) {
 					error = e;
 					return false;
 				}
@@ -188,11 +188,11 @@ public class SystemAppUtilities {
 	 *
 	 * @param context app context
 	 * @param keepUserApp decides if an existing user app should be kept or deleted
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static void uninstallSystemApp(final Context context, final boolean keepUserApp) throws SystemAppManagementException {
+	public static void uninstallSystemApp(final Context context, final boolean keepUserApp) throws SystemAppUtilitiesException {
 		AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
-			SystemAppManagementException error = null;
+			SystemAppUtilitiesException error = null;
 			ProgressDialog progress = null;
 
 			@Override
@@ -205,7 +205,7 @@ public class SystemAppUtilities {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					deleteSystemApp(context, keepUserApp);
-				} catch (SystemAppManagementException e) {
+				} catch (SystemAppUtilitiesException e) {
 					error = e;
 					return false;
 				}
@@ -231,11 +231,11 @@ public class SystemAppUtilities {
 	 * CAUTION! This could lead to problems on various Android versions!
 	 *
 	 * @param context app context
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static void uninstallUserApp(final Context context) throws SystemAppManagementException {
+	public static void uninstallUserApp(final Context context) throws SystemAppUtilitiesException {
 		AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
-			SystemAppManagementException error = null;
+			SystemAppUtilitiesException error = null;
 			ProgressDialog progress = null;
 
 			@Override
@@ -248,7 +248,7 @@ public class SystemAppUtilities {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					deleteUserApp(context);
-				} catch (SystemAppManagementException e) {
+				} catch (SystemAppUtilitiesException e) {
 					error = e;
 					return false;
 				}
@@ -273,11 +273,11 @@ public class SystemAppUtilities {
 	 * CAUTION! This could lead to problems on various Android versions!
 	 *
 	 * @param context app context
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	public static void clearAppData(final Context context) throws SystemAppManagementException {
+	public static void clearAppData(final Context context) throws SystemAppUtilitiesException {
 		AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
-			SystemAppManagementException error = null;
+			SystemAppUtilitiesException error = null;
 			ProgressDialog progress = null;
 
 			@Override
@@ -290,7 +290,7 @@ public class SystemAppUtilities {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					deleteAppData(context);
-				} catch (SystemAppManagementException e) {
+				} catch (SystemAppUtilitiesException e) {
 					error = e;
 					return false;
 				}
@@ -315,13 +315,13 @@ public class SystemAppUtilities {
 	 * @param context app context
 	 * @param includeFullPath decides if the full path should be included or not
 	 * @return APK file name, including its full path or not
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static String getApkName(final Context context, boolean includeFullPath) throws SystemAppManagementException {
+	private static String getApkName(final Context context, boolean includeFullPath) throws SystemAppUtilitiesException {
 		String fullPath = context.getApplicationInfo().sourceDir;
 
 		if (fullPath.isEmpty() || (fullPath.lastIndexOf('/') == -1)) {
-			throw new SystemAppManagementException("Unable to find the path to the APK. Is it already uninstalled? Did you remember to reboot after uninstalling? Current location appears to be " + fullPath + ".");
+			throw new SystemAppUtilitiesException("Unable to find the path to the APK. Is it already uninstalled? Did you remember to reboot after uninstalling? Current location appears to be " + fullPath + ".");
 		}
 
 		if (!includeFullPath) {
@@ -336,9 +336,9 @@ public class SystemAppUtilities {
 	 *
 	 * @param context app context
 	 * @param overwriteIfExists decides if an existing system app should be overwritten or not
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static void copyAppToSystem(final Context context, final boolean overwriteIfExists) throws SystemAppManagementException {
+	private static void copyAppToSystem(final Context context, final boolean overwriteIfExists) throws SystemAppUtilitiesException {
 		// Verify we do have root
 		gainRootAccess();
 
@@ -346,7 +346,7 @@ public class SystemAppUtilities {
 		String currentFile = getApkName(context, true);
 
 		if (currentFile.startsWith("/system/")) {
-			throw new SystemAppManagementException("Only a system app is available but no user app.");
+			throw new SystemAppUtilitiesException("Only a system app is available but no user app.");
 		}
 
 		if (RootTools.exists(systemAppFile, false)) {
@@ -354,11 +354,11 @@ public class SystemAppUtilities {
 				boolean deletedApp = RootTools.deleteFileOrDirectory(systemAppFile, true);
 
 				if (!deletedApp) {
-					throw new SystemAppManagementException("Unable to delete the file " + systemAppFile + ".");
+					throw new SystemAppUtilitiesException("Unable to delete the file " + systemAppFile + ".");
 				}
 			} else {
 				// RootTools.copyFile(...) below overwrites existing files, so throw an exception if the file exists
-				throw new SystemAppManagementException("The file " + systemAppFile + " already exists.");
+				throw new SystemAppUtilitiesException("The file " + systemAppFile + " already exists.");
 			}
 		}
 
@@ -368,7 +368,7 @@ public class SystemAppUtilities {
 		boolean copiedApp = RootTools.copyFile(currentFile, systemAppFile, true, true);
 
 		if (!copiedApp) {
-			throw new SystemAppManagementException("Unable to copy the file " + currentFile + " to " + systemAppFile + ".");
+			throw new SystemAppUtilitiesException("Unable to copy the file " + currentFile + " to " + systemAppFile + ".");
 		}
 	}
 
@@ -382,16 +382,16 @@ public class SystemAppUtilities {
 	 * The purpose of this method is to restore a user app, if it got lost by a factory reset.
 	 *
 	 * @param context app context
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static void copyAppToData(final Context context) throws SystemAppManagementException {
+	private static void copyAppToData(final Context context) throws SystemAppUtilitiesException {
 		String currentFile = getApkName(context, true);
 
 		// It shouldn't be necessary to test this, because we tested it before calling this method
 		// Let's do it anyway, if this method is going to be used somewhere else in the future
 		// We don't use isSystemApp(...) here, because, although this should not happen, the app or device probably haven't been restarted
 		if (!RootTools.exists(systemAppFile)) {
-			throw new SystemAppManagementException("System app doesn't exist, nothing to do.");
+			throw new SystemAppUtilitiesException("System app doesn't exist, nothing to do.");
 		}
 
 		// Verify we do have root
@@ -434,7 +434,7 @@ public class SystemAppUtilities {
 			// Revert eventually successful parts by deleting the folder
 			boolean deletedUserAppDir = RootTools.deleteFileOrDirectory(targetPath.substring(0, targetPath.lastIndexOf('/')), true);
 
-			throw new SystemAppManagementException("Unable to copy the file " + currentFile + " to " + targetPath + ".");
+			throw new SystemAppUtilitiesException("Unable to copy the file " + currentFile + " to " + targetPath + ".");
 		}
 	}
 
@@ -443,12 +443,12 @@ public class SystemAppUtilities {
 	 *
 	 * @param context app context
 	 * @param keepUserApp decides if an existing user app should be kept or deleted
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static void deleteSystemApp(final Context context, final boolean keepUserApp) throws SystemAppManagementException {
+	private static void deleteSystemApp(final Context context, final boolean keepUserApp) throws SystemAppUtilitiesException {
 		// We don't use isSystemApp(...) here, because, although this should not happen, the app or device probably haven't been restarted
 		if (!RootTools.exists(systemAppFile)) {
-			throw new SystemAppManagementException("System app doesn't exist, nothing to do.");
+			throw new SystemAppUtilitiesException("System app doesn't exist, nothing to do.");
 		}
 
 		// Verify we do have root
@@ -470,7 +470,7 @@ public class SystemAppUtilities {
 		boolean deletedSystemApp = RootTools.deleteFileOrDirectory(systemAppFile, true);
 
 		if (!deletedSystemApp) {
-			throw new SystemAppManagementException("Unable to delete the file " + systemAppFile + ".");
+			throw new SystemAppUtilitiesException("Unable to delete the file " + systemAppFile + ".");
 		}
 	}
 
@@ -481,9 +481,9 @@ public class SystemAppUtilities {
 	 * CAUTION! This could lead to problems on various Android versions!
 	 *
 	 * @param context app context
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static void deleteUserApp(final Context context) throws SystemAppManagementException {
+	private static void deleteUserApp(final Context context) throws SystemAppUtilitiesException {
 		// Verify we do have root
 		gainRootAccess();
 
@@ -491,7 +491,7 @@ public class SystemAppUtilities {
 		String currentFile = getApkName(context, true);
 
 		if (currentFile.startsWith("/system/")) {
-			throw new SystemAppManagementException("User app doesn't exist, only system app is left.");
+			throw new SystemAppUtilitiesException("User app doesn't exist, only system app is left.");
 		}
 
 		String userAppDir;
@@ -508,7 +508,7 @@ public class SystemAppUtilities {
 			boolean deletedDataApp = RootTools.deleteFileOrDirectory(userAppDir, false);
 
 			if (!deletedDataApp) {
-				throw new SystemAppManagementException("Unable to delete the file " + userAppDir + ".");
+				throw new SystemAppUtilitiesException("Unable to delete the file " + userAppDir + ".");
 			}
 		}
 	}
@@ -519,9 +519,9 @@ public class SystemAppUtilities {
 	 * CAUTION! This could lead to problems on various Android versions!
 	 *
 	 * @param context app context
-	 * @throws SystemAppManagementException in case of an error, check message
+	 * @throws SystemAppUtilitiesException in case of an error, check message
 	 */
-	private static void deleteAppData(final Context context) throws SystemAppManagementException {
+	private static void deleteAppData(final Context context) throws SystemAppUtilitiesException {
 		// Verify we do have root
 		gainRootAccess();
 
@@ -533,7 +533,7 @@ public class SystemAppUtilities {
 			boolean deletedDataDir = RootTools.deleteFileOrDirectory(dataDir, false);
 
 			if (!deletedDataDir) {
-				throw new SystemAppManagementException("Unable to delete the directory " + dataDir + ".");
+				throw new SystemAppUtilitiesException("Unable to delete the directory " + dataDir + ".");
 			}
 		}
 	}
@@ -547,7 +547,7 @@ public class SystemAppUtilities {
 	 * @param context app context
 	 * @param error error exception, null if successful
 	 */
-	private static void checkResult(Boolean result, final Context context, SystemAppManagementException error) {
+	private static void checkResult(Boolean result, final Context context, SystemAppUtilitiesException error) {
 		if (result) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(context);
 			builder.setTitle(R.string.complete_title)
@@ -667,14 +667,14 @@ public class SystemAppUtilities {
 	/**
 	 * Simple exception used for various error messages
 	 */
-	public static class SystemAppManagementException extends Exception {
+	public static class SystemAppUtilitiesException extends Exception {
 		private static final long serialVersionUID = 5745558614933336197L;
 
-		public SystemAppManagementException(String msg) {
+		public SystemAppUtilitiesException(String msg) {
 			super(msg);
 		}
 
-		public SystemAppManagementException(String msg, Throwable e) {
+		public SystemAppUtilitiesException(String msg, Throwable e) {
 			super(msg, e);
 		}
 	}

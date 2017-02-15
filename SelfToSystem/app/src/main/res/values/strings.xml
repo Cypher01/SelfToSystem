@@ -4,15 +4,27 @@
 	<string name="app_name">Self To System</string>
 	<string name="button_cancel">Cancel</string>
 	<string name="button_close">Close</string>
+	<string name="button_github">GitHub</string>
 	<string name="root_available">Root is available</string>
 	<string name="root_unavailable">Root is NOT available</string>
+	<string name="msg_first_start">Self To System is a simple Android example app that can install itself as a system app. Its purpose is to demonstrate the capabilities of its core functionality, the SystemAppUtilities class.\n\nThe SystemAppUtilities class can be used by any app to make it capable to install itself as a system app. This can be used to extend the apps capabilities and make it resistant to factory resets.\n\nThis example app also shows some information about its user and system apk. But it has no practical functionality.\n\nEvery button shows an information dialog before doing anything. You can continue or cancel.\n\nIf you\'re interested in making your app capable to install itself as a system app, check out the source code on GitHub.</string>
+	<string name="msg_root_unavailable">This App works only on rooted devices. It won\'t help you without root access.</string>
+	<string name="msg_header_info">Info</string>
+	<string name="msg_header_warning">Warning</string>
+	<string name="msg_header_error">Error</string>
+	<string name="msg_refreshData">The data about the user and system app is going to be refreshed.\n\nThis is also done automatically when starting and resuming the app.</string>
+	<string name="msg_gainRootAccess">You can gain root access to this app using this button. You are going to be prompted with a superuser allow/deny dialog.\n\nNo problem if you don\'t use this button, at the latest when using any functionality, the superuser dialog will show up.</string>
+	<string name="msg_installAsSystemApp">The user app will now be copied to the system partition. If the system app already exists, it will be overwritten, which can be useful for updating the system app. When using SystemAppUtilities for your own app, you can change this behavior by a parameter, take a look at the source code.\n\nIf there is only a system app and no user app left, there\'s nothing to do and you\'ll get an error dialog.\n\nAfter success, you\'ll be prompted to reboot your device.</string>
+	<string name="msg_uninstallSystemApp">The system app will now be deleted. If there is no user app left, the system app will be copied to the data partition first. When using SystemAppUtilities for your own app, you can change this behavior by a parameter, take a look at the source code.\n\nIf there is only a user app and no system app, there\'s nothing to do and you\'ll get an error dialog.\n\nAfter success, you\'ll be prompted to reboot your device.</string>
+	<string name="msg_uninstallUserApp">The user app will now be deleted. This doesn\'t care about whether there is a system app or not!\n\nIT\'S NOT RECOMMENDED TO USE THIS!! IT HAS BEEN IMPLEMENTED MAINLY FOR TESTING PURPOSES AND CAN LEAD TO PROBLEMS ON SEVERAL ANDROID ROMS! YOU SHOULD USE THE NORMAL ANDROID WAY TO UNINSTALL USER APPS!\n\nEven if you have a system app, keeping a user app doesn\'t hurt. If it get\'s lost, maybe because of a factory reset, it\'s a different story, but you shouldn\'t remove it by yourself.\n\nAfter success, you\'ll be prompted to reboot your device.</string>
+	<string name="msg_clearAppData">The app data will now be deleted.\n\nIT\'S NOT RECOMMENDED TO USE THIS!! IT HAS BEEN IMPLEMENTED MAINLY FOR TESTING PURPOSES AND CAN LEAD TO PROBLEMS ON SEVERAL ANDROID ROMS! YOU SHOULD USE THE NORMAL ANDROID WAY TO DELETE APP DATA!\n\nAfter success, you\'ll be prompted to reboot your device.</string>
 
 	<!-- SystemAppUtilities -->
 	<string name="progress_title">Please wait…</string>
 	<string name="progress_copy_to_system">Copying app to system…\n\nMake sure you accept any superuser requests.</string>
 	<string name="progress_uninstalling">Uninstalling app…\n\nMake sure you accept any superuser requests.</string>
 	<string name="progress_deleting">Deleting app data…\n\nMake sure you accept any superuser requests.</string>
-	<string name="complete_title">Success - just one last step!</string>
+	<string name="complete_title">Success</string>
 	<string name="complete_reboot">A reboot is required. Would you like to reboot now?</string>
 	<string name="button_reboot">Reboot</string>
 	<string name="button_soft_reboot">Soft reboot</string>
