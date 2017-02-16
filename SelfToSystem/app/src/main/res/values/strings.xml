@@ -18,6 +18,7 @@
 	<string name="msg_uninstallSystemApp">The system app will now be deleted. If there is no user app left, the system app will be copied to the data partition first. When using SystemAppUtilities for your own app, you can change this behavior by a parameter, take a look at the source code.\n\nIf there is only a user app and no system app, there\'s nothing to do and you\'ll get an error dialog.\n\nAfter success, you\'ll be prompted to reboot your device.</string>
 	<string name="msg_uninstallUserApp">The user app will now be deleted. This doesn\'t care about whether there is a system app or not!\n\nIT\'S NOT RECOMMENDED TO USE THIS!! IT HAS BEEN IMPLEMENTED MAINLY FOR TESTING PURPOSES AND CAN LEAD TO PROBLEMS ON SEVERAL ANDROID ROMS! YOU SHOULD USE THE NORMAL ANDROID WAY TO UNINSTALL USER APPS!\n\nEven if you have a system app, keeping a user app doesn\'t hurt. If it get\'s lost, maybe because of a factory reset, it\'s a different story, but you shouldn\'t remove it by yourself.\n\nAfter success, you\'ll be prompted to reboot your device.</string>
 	<string name="msg_clearAppData">The app data will now be deleted.\n\nIT\'S NOT RECOMMENDED TO USE THIS!! IT HAS BEEN IMPLEMENTED MAINLY FOR TESTING PURPOSES AND CAN LEAD TO PROBLEMS ON SEVERAL ANDROID ROMS! YOU SHOULD USE THE NORMAL ANDROID WAY TO DELETE APP DATA!\n\nAfter success, you\'ll be prompted to reboot your device.</string>
+	<string name="msg_reboot">The device is now going to be rebooted.</string>
 
 	<!-- SystemAppUtilities -->
 	<string name="progress_title">Please wait…</string>

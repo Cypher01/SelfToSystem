@@ -164,6 +164,28 @@
 
 			</LinearLayout>
 
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1">
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_softReboot"
+					android:text="Soft Reboot"/>
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:id="@+id/btn_reboot"
+					android:text="Reboot"/>
+
+			</LinearLayout>
+
 		</LinearLayout>
 
 	</LinearLayout>

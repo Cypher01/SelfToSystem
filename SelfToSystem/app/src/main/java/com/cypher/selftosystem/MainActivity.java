@@ -10,10 +10,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.cypher.selftosystem.SystemAppUtilities.SystemAppUtilitiesException;
+import com.stericson.RootShell.exceptions.RootDeniedException;
+import com.stericson.RootShell.execution.Command;
+import com.stericson.RootTools.RootTools;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends Activity {
 	public static final String TAG = "SelfToSystem";
@@ -43,6 +50,8 @@ public class MainActivity extends Activity {
 		Button btn_uninstallSystemApp = (Button) findViewById(R.id.btn_uninstallSystemApp);
 		Button btn_uninstallUserApp = (Button) findViewById(R.id.btn_uninstallUserApp);
 		Button btn_clearAppData = (Button) findViewById(R.id.btn_clearAppData);
+		Button btn_softReboot = (Button) findViewById(R.id.btn_softReboot);
+		Button btn_reboot = (Button) findViewById(R.id.btn_reboot);
 
 		btn_refreshData.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -118,6 +127,24 @@ public class MainActivity extends Activity {
 					} catch (SystemAppUtilitiesException e) {
 						errorDialog(e.getMessage());
 					}
+				}
+			}
+		});
+
+		btn_softReboot.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (blockingOkCancelDialog(getString(R.string.msg_header_info), getString(R.string.msg_reboot))) {
+					SystemAppUtilities.rebootDevice(MainActivity.this, true);
+				}
+			}
+		});
+
+		btn_reboot.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (blockingOkCancelDialog(getString(R.string.msg_header_info), getString(R.string.msg_reboot))) {
+					SystemAppUtilities.rebootDevice(MainActivity.this, false);
 				}
 			}
 		});

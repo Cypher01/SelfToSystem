@@ -39,11 +39,20 @@ public class SystemAppUtilities {
 		String subfolder = "";
 		String apkName = BuildConfig.APPLICATION_ID + ".apk";
 
-		if (android.os.Build.VERSION.SDK_INT < 18) { // Android 4.2: API 17, Android 4.3: API 18 (first with priv-app)
+		// Android 4.3: API 18, some say this already had the priv-app folder, but at least Genymotion does not
+		// Android 4.4: API 19, first version that definitely had a priv-app folder
+		// This configuration might cause your app to land in /system/app even though there is a /system/priv-app folder.
+		// Depending on what your app should be capable of, this may or may not be a problem.
+		// Hopefully no one uses Android 4.3 Jelly Bean anymore anyway.
+		if (android.os.Build.VERSION.SDK_INT < 19) {
 			systemAppsPath = "/system/app/";
 		}
 
-		if (android.os.Build.VERSION.SDK_INT < 20) { // Android 4.4: API 19, Android 5.0: API 21 (first with subfolders for apps)
+		// Android 4.4: API 19
+		// Android Wear: API 20, not supported/tested
+		// Android 5.0: API 21, first version with subfolders for apps
+		// You can uncomment this block and hard-code the appName, but this is not mandatory for SystemAppUtilities to work.
+		if (android.os.Build.VERSION.SDK_INT < 20) {
 			// TODO: Create subfolder for system app? Not necessary, but would be nice.
 			//String appName = ; // TODO: We should use the app name, but how to get it without the context?
 			//subfolder = appName + "/";
@@ -589,7 +598,7 @@ public class SystemAppUtilities {
 	 * @param context app context
 	 * @param softReboot decides whether doing a soft or complete reboot
 	 */
-	private static void rebootDevice(final Context context, final boolean softReboot) {
+	public static void rebootDevice(final Context context, final boolean softReboot) {
 		AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
 			ProgressDialog progress = null;
 
