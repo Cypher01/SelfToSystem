@@ -33,7 +33,7 @@ Some of the problems might be related to Genymotion, but they can also occur on 
 
 If you're interested in making your app capable to install itself as a system app, all you need is
 
-* <a href="https://github.com/Cypher01/SelfToSystem/blob/master/SelfToSystem/app/src/main/java/com/cypher/selftosystem/SystemAppUtilities.java">SystemAppUtilities.java</a>
+* <a href="https://github.com/Cypher01/SelfToSystem/blob/master/SelfToSystem/app/src/main/java/com/cypher/selftosystem/SystemAppUtilities.java">SystemAppUtilities.java</a> (only adjust package name)
 * <a href="https://github.com/Stericson/RootTools/releases/download/4.2/RootTools.jar">RootTools.jar</a>
 
 Add this to your project and use the public methods of the SystemAppUtilities class. For more details, check out the source code.
